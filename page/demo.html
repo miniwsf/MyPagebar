@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>分页Demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/page.js"></script>
+</head>
+<body>
+<div id="content"></div>
+<script>
+var url="";
+$("#content").page({                    //³õÊ¼»¯²ÎÊý
+	perPage:11,
+	url:url,
+	curPage:1,
+	pageParam:"page"
+}).toPage(function(data){
+	var html="";
+	for(var i=0;i<data.length;i++){
+		var id=data[i].id;
+		var title=data[i].title;
+		var abContent=data[i].abContent;
+		html+="<div class='page-header'>"+
+			"<h2><a>"+title+"</a></h2>"+
+	        "<p>"+abContent+"<p>"+
+	  	    "</div>";
+	}
+	$("#content").html(html);
+});
+</script>
+</body>
+</html>
